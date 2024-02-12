@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://7tuwpnpttdrm" path="res://Sprites/case.png" id="1_yq2lv"]
 [ext_resource type="Texture2D" uid="uid://di8g6iv1psk23" path="res://Sprites/case_glass.png" id="2_jis63"]
 [ext_resource type="Texture2D" uid="uid://cihc0rfvs4hlv" path="res://Sprites/cloud.png" id="3_8phbk"]
+[ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="4_waiwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05ed2"]
 size = Vector2(8, 436)
@@ -13,10 +14,6 @@ size = Vector2(8, 436)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4oks"]
 size = Vector2(384, 12)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2doj2"]
-radius = 9.0
-height = 18.0
-
 [node name="Game" type="Node2D"]
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -24,7 +21,7 @@ height = 18.0
 [node name="Wall" type="StaticBody2D" parent="."]
 
 [node name="Case" type="Sprite2D" parent="Wall"]
-position = Vector2(0, 47)
+position = Vector2(0, 53)
 scale = Vector2(4, 4)
 texture = ExtResource("1_yq2lv")
 
@@ -46,17 +43,20 @@ shape = SubResource("RectangleShape2D_af3tb")
 position = Vector2(0, 297)
 shape = SubResource("RectangleShape2D_e4oks")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Line" type="Line2D" parent="."]
 position = Vector2(0, -230)
 scale = Vector2(3, 3)
-
-[node name="Line" type="Line2D" parent="CharacterBody2D"]
 points = PackedVector2Array(0, 165, 0, 0)
 width = 2.0
 default_color = Color(1, 0.145098, 0.0705882, 1)
 
-[node name="Cloud" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("3_8phbk")
+[node name="Fruit" type="Sprite2D" parent="."]
+position = Vector2(0, -191)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_waiwt")
+hframes = 11
 
-[node name="Collision" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_2doj2")
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(0, -230)
+scale = Vector2(3, 3)
+texture = ExtResource("3_8phbk")
