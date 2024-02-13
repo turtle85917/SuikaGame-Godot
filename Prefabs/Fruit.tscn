@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1ja0ruwplb71"]
+
+[ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="1_8k8hi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kblh3"]
+bounce = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eih6v"]
+radius = 14.0
+
+[node name="Fruit" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_kblh3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_8k8hi")
+hframes = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_eih6v")
