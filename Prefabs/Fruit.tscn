@@ -6,16 +6,18 @@
 bounce = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eih6v"]
-radius = 14.0
+radius = 9.5
 
 [node name="Fruit" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_kblh3")
+freeze_mode = 1
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_8k8hi")
 hframes = 11
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_eih6v")

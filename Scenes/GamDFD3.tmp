@@ -56,6 +56,6 @@ script = ExtResource("5_itl8i")
 
 [node name="Line" type="Line2D" parent="Player"]
 z_index = -1
-points = PackedVector2Array(0, 0, 0, 167)
+points = PackedVector2Array(0, 0, 0, 168.3)
 width = 2.0
 default_color = Color(1, 0.145098, 0.0705882, 1)

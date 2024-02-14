@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b16xovlfqqyik"]
+[gd_scene load_steps=10 format=3 uid="uid://b16xovlfqqyik"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_5beoy"]
 [ext_resource type="Texture2D" uid="uid://7tuwpnpttdrm" path="res://Sprites/case.png" id="1_yq2lv"]
 [ext_resource type="Texture2D" uid="uid://di8g6iv1psk23" path="res://Sprites/case_glass.png" id="2_jis63"]
 [ext_resource type="Texture2D" uid="uid://cihc0rfvs4hlv" path="res://Sprites/cloud.png" id="3_8phbk"]
+[ext_resource type="PackedScene" uid="uid://c1ja0ruwplb71" path="res://Prefabs/Fruit.tscn" id="4_ygot5"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_itl8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05ed2"]
@@ -46,7 +47,8 @@ shape = SubResource("RectangleShape2D_af3tb")
 position = Vector2(0, 281)
 shape = SubResource("RectangleShape2D_e4oks")
 
-[node name="Fruits" type="Node2D" parent="."]
+[node name="Fruit" parent="." instance=ExtResource("4_ygot5")]
+position = Vector2(0, -192)
 
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(0, -230)
@@ -56,6 +58,9 @@ script = ExtResource("5_itl8i")
 
 [node name="Line" type="Line2D" parent="Player"]
 z_index = -1
-points = PackedVector2Array(0, 0, 0, 167)
+points = PackedVector2Array(0, 0, 0, 168)
 width = 2.0
 default_color = Color(1, 0.145098, 0.0705882, 1)
+
+[node name="RayCast" type="RayCast2D" parent="Player"]
+target_position = Vector2(0, 168.333)
