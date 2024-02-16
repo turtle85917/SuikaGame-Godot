@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://b16xovlfqqyik"]
+
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_5beoy"]
+[ext_resource type="Texture2D" uid="uid://7tuwpnpttdrm" path="res://Sprites/case.png" id="1_yq2lv"]
+[ext_resource type="Texture2D" uid="uid://di8g6iv1psk23" path="res://Sprites/case_glass.png" id="2_jis63"]
+[ext_resource type="Texture2D" uid="uid://cihc0rfvs4hlv" path="res://Sprites/cloud.png" id="3_8phbk"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="5_itl8i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ed2"]
+size = Vector2(12, 424)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af3tb"]
+size = Vector2(12, 424)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4oks"]
+size = Vector2(344, 12)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_5beoy")
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="Case" type="Sprite2D" parent="Wall"]
+z_index = -2
+position = Vector2(0, 53)
+scale = Vector2(4, 4)
+texture = ExtResource("1_yq2lv")
+
+[node name="CaseGlass" type="Sprite2D" parent="Wall"]
+z_index = 3
+position = Vector2(0, 73)
+scale = Vector2(4, 4)
+texture = ExtResource("2_jis63")
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-178, 75)
+shape = SubResource("RectangleShape2D_05ed2")
+
+[node name="RightCollision" type="CollisionShape2D" parent="Wall"]
+position = Vector2(178, 75)
+shape = SubResource("RectangleShape2D_af3tb")
+
+[node name="BottomCollision" type="CollisionShape2D" parent="Wall"]
+position = Vector2(0, 281)
+shape = SubResource("RectangleShape2D_e4oks")
+
+[node name="Fruits" type="Node2D" parent="."]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(0, -230)
+scale = Vector2(3, 3)
+texture = ExtResource("3_8phbk")
+script = ExtResource("5_itl8i")
+
+[node name="Line" type="Line2D" parent="Player"]
+z_index = -1
+points = PackedVector2Array(0, 0, 0, 167)
+width = 2.0
+default_color = Color(1, 0.145098, 0.0705882, 1)
