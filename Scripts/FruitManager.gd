@@ -25,6 +25,7 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	var fruitNode = instance.Fruit.instantiate();
 	owner.get_node("Fruits").call_deferred_thread_group("add_child", fruitNode);
 	fruitNode.name = "Fruit";
+	fruitNode.mass = pow(fruit.size, fruit.size) * 0.1;
 	fruitNode.fruitType = fruit.type;
 	var fruitSprite = fruitNode.get_node("Sprite");
 	var fruitCollision = fruitNode.get_node("Collision");
@@ -37,5 +38,3 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	if(fruit.has("offset")): fruitCollision.transform.origin.y += fruit.offset;
 	fruitNode.transform.origin = initalPosition;
 	return fruitNode;
-func createFruit(owner:Node) -> Node:
-	return createFruitType(owner, randi_range(0, 1), Vector2(0, -200), true);

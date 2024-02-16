@@ -2,14 +2,13 @@ extends Node2D
 
 var fruitNode:RigidBody2D;
 var isMoving:bool = false;
-@onready var fruitMananger = FruitManager.new();
 
 const MAX_POS_X:int = 156;
 
 func _ready():
 	createFruit();
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var strength = Input.get_action_strength("right") - Input.get_action_strength("left");
 	move_local_x(strength * 8);
 	if(abs(transform.origin.x) > MAX_POS_X):
@@ -24,6 +23,5 @@ func _physics_process(delta):
 		get_tree().create_timer(0.5).connect("timeout", func():createFruit());
 
 func createFruit():
-	fruitNode = fruitMananger.createFruit(get_owner());
-	fruitNode.transform.origin.x = transform.origin.x;
 	isMoving = true;
+	fruitNode = FruitManager.createFruitType(get_owner(), randi_range(0, 1), Vector2(transform.origin.x, -200), true);

@@ -1,28 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1ja0ruwplb71"]
+[gd_scene load_steps=5 format=3 uid="uid://d2eqi7ox8155s"]
 
-[ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="1_8k8hi"]
-[ext_resource type="Script" path="res://Scripts/Fruit.gd" id="1_ccbuc"]
+[ext_resource type="PhysicsMaterial" uid="uid://bf224yxh4cdvl" path="res://Materials/FruitPhysicsMaterial.tres" id="1_1eegl"]
+[ext_resource type="Script" path="res://Scripts/Fruit.gd" id="1_f38tn"]
+[ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="1_tv4cc"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kblh3"]
-bounce = 0.3
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_eih6v"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3je1s"]
 radius = 9.5
 
 [node name="Fruit" type="RigidBody2D" groups=["Fruit"]]
-physics_material_override = SubResource("PhysicsMaterial_kblh3")
-max_contacts_reported = 1
+physics_material_override = ExtResource("1_1eegl")
+max_contacts_reported = 2
 contact_monitor = true
-script = ExtResource("1_ccbuc")
+script = ExtResource("1_f38tn")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_8k8hi")
+texture = ExtResource("1_tv4cc")
 hframes = 11
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 scale = Vector2(1.5, 1.5)
-shape = SubResource("CircleShape2D_eih6v")
+shape = SubResource("CircleShape2D_3je1s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
