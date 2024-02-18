@@ -8,6 +8,6 @@ func _on_body_entered(body:Node):
 	if(body.get_groups().has("Fruit") && body.fruitType == fruitType && !isMerged):
 		isMerged = true;
 		body.isMerged = true;
+		FruitManager.createFruitType(get_parent().get_owner(), fruitType + 1, body.transform.origin);
 		queue_free();
 		body.queue_free();
-		FruitManager.createFruitType(get_parent().get_owner(), fruitType + 1, body.transform.origin);

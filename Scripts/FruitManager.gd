@@ -6,17 +6,17 @@ enum FruitType {Cherry, Strawberry, Grahpe, Dekopon, Orange, Apple, Pear, Peach,
 static var instance = FruitManager.new();
 var Fruit = preload("res://Prefabs/Fruit.tscn");
 @export var fruits:Array[Dictionary] = [
-	{"type":FruitType.Cherry, "size": 1.5},
-	{"type":FruitType.Strawberry, "size": 2},
-	{"type":FruitType.Grahpe, "size": 2.5},
-	{"type":FruitType.Dekopon, "size": 3, "offset": 2},
-	{"type":FruitType.Orange, "size": 3.5, "offset": 1.5},
-	{"type":FruitType.Apple, "size": 4},
-	{"type":FruitType.Pear, "size": 4.5},
-	{"type":FruitType.Peach, "size": 5},
-	{"type":FruitType.Pineapple, "size": 6.5},
-	{"type":FruitType.Melon, "size": 7.5, "offset": 1},
-	{"type":FruitType.Watermelon, "size": 8, "offset": 3}
+	{"type":FruitType.Cherry, "size": 1.5, "color": Color(0.79, 0.23, 0.23)},
+	{"type":FruitType.Strawberry, "size": 2, "color": Color(0.89, 0.21, 0.21)},
+	{"type":FruitType.Grahpe, "size": 2.5, "color": Color(0.58, 0.21, 0.72)},
+	{"type":FruitType.Dekopon, "size": 3, "color": Color(0.79, 0.4, 0.12), "offset": 2},
+	{"type":FruitType.Orange, "size": 3.5, "color": Color(0.9, 0.4, 0.11), "offset": 1.5},
+	{"type":FruitType.Apple, "size": 4, "color": Color(0.74, 0.17, 0.17)},
+	{"type":FruitType.Pear, "size": 4.5, "color": Color(0.75, 0.7, 0.23)},
+	{"type":FruitType.Peach, "size": 5, "color": Color(0.93, 0.46, 0.46)},
+	{"type":FruitType.Pineapple, "size": 6.5, "color": Color(0.83, 0.82, 0.31)},
+	{"type":FruitType.Melon, "size": 7.5, "color": Color(0.6, 0.66, 0.2), "offset": 1},
+	{"type":FruitType.Watermelon, "size": 8, "color": Color(0.13, 0.53, 0.05), "offset": 3}
 ];
 
 static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 = Vector2(0, -200), freezing:bool = false) -> Node:
@@ -25,7 +25,7 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	var fruitNode = instance.Fruit.instantiate();
 	owner.get_node("Fruits").call_deferred_thread_group("add_child", fruitNode);
 	fruitNode.name = "Fruit";
-	fruitNode.mass = pow(fruit.size, fruit.size) * 0.1;
+	fruitNode.mass = fruit.size * 0.2;
 	fruitNode.fruitType = fruit.type;
 	var fruitSprite = fruitNode.get_node("Sprite");
 	var fruitCollision = fruitNode.get_node("Collision");
@@ -35,6 +35,17 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	if(freezing):
 		fruitNode.freeze = true;
 		fruitCollision.disabled = true;
+	else:
+		fruitSprite.scale = Vector2.ZERO;
+		var fruitParticles:GPUParticles2D = fruitNode.get_node("Particles");
+		var fruitParticleMaterial = fruitParticles.process_material.duplicate();
+		fruitParticleMaterial.color = fruit.color;
+		fruitParticles.process_material = fruitParticleMaterial;
+		fruitParticles.reparent(owner);
+		fruitParticles.transform.origin = initalPosition;
+		fruitParticles.emitting = true;
+		owner.get_tree().create_timer(fruitParticles.lifetime).connect("timeout", func():fruitParticles.queue_free());
+		owner.create_tween().tween_property(fruitSprite, "scale", Vector2.ONE * fruit.size, 0.2).set_trans(Tween.TRANS_EXPO);
 	if(fruit.has("offset")): fruitCollision.transform.origin.y += fruit.offset;
 	fruitNode.transform.origin = initalPosition;
 	return fruitNode;

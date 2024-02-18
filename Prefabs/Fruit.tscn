@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2eqi7ox8155s"]
+[gd_scene load_steps=12 format=3 uid="uid://d2eqi7ox8155s"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://bf224yxh4cdvl" path="res://Materials/FruitPhysicsMaterial.tres" id="1_1eegl"]
 [ext_resource type="Script" path="res://Scripts/Fruit.gd" id="1_f38tn"]
@@ -6,6 +6,39 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3je1s"]
 radius = 9.5
+
+[sub_resource type="Curve" id="Curve_27o1x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fm2xi"]
+curve = SubResource("Curve_27o1x")
+
+[sub_resource type="Gradient" id="Gradient_qmp1o"]
+colors = PackedColorArray(0.646029, 0.646029, 0.646029, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7cy41"]
+gradient = SubResource("Gradient_qmp1o")
+
+[sub_resource type="Curve" id="Curve_yn174"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.098901), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xwjnx"]
+curve = SubResource("Curve_yn174")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iy6rh"]
+particle_flag_disable_z = true
+spread = 180.0
+radial_velocity_min = 100.0
+radial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_min = 15.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_xwjnx")
+color = Color(0.792157, 0.235294, 0.235294, 1)
+color_initial_ramp = SubResource("GradientTexture1D_7cy41")
+alpha_curve = SubResource("CurveTexture_fm2xi")
 
 [node name="Fruit" type="RigidBody2D" groups=["Fruit"]]
 physics_material_override = ExtResource("1_1eegl")
@@ -22,5 +55,13 @@ hframes = 11
 position = Vector2(0, 5)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3je1s")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+z_index = 2
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_iy6rh")
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
