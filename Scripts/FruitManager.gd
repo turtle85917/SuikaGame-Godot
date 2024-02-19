@@ -23,9 +23,9 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	if(type + 1 > len(instance.fruits)): return;
 	var fruit = instance.fruits[type];
 	var fruitNode = instance.Fruit.instantiate();
-	owner.get_node("Fruits").call_deferred_thread_group("add_child", fruitNode);
-	fruitNode.name = "Fruit";
+	owner.get_node("Fruits").call_deferred_thread_group("add_child", fruitNode, true);
 	fruitNode.mass = fruit.size * 0.2;
+	fruitNode.name = "Fruit";
 	fruitNode.fruitType = fruit.type;
 	var fruitSprite = fruitNode.get_node("Sprite");
 	var fruitCollision = fruitNode.get_node("Collision");
@@ -35,17 +35,12 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	if(freezing):
 		fruitNode.freeze = true;
 		fruitCollision.disabled = true;
-	else:
-		fruitSprite.scale = Vector2.ZERO;
-		var fruitParticles:GPUParticles2D = fruitNode.get_node("Particles");
-		var fruitParticleMaterial = fruitParticles.process_material.duplicate();
-		fruitParticleMaterial.color = fruit.color;
-		fruitParticles.process_material = fruitParticleMaterial;
-		fruitParticles.reparent(owner);
-		fruitParticles.transform.origin = initalPosition;
-		fruitParticles.emitting = true;
-		owner.get_tree().create_timer(fruitParticles.lifetime).connect("timeout", func():fruitParticles.queue_free());
-		owner.create_tween().tween_property(fruitSprite, "scale", Vector2.ONE * fruit.size, 0.2).set_trans(Tween.TRANS_EXPO);
+	fruitNode.connect("tree_entered", func():
+		fruitNode.set_owner(owner)
+		if(!freezing):
+			fruitSprite.scale = Vector2.ZERO;
+			fruitNode.playShowAnimation(fruit);
+	);
 	if(fruit.has("offset")): fruitCollision.transform.origin.y += fruit.offset;
 	fruitNode.transform.origin = initalPosition;
 	return fruitNode;

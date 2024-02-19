@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="1_tv4cc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3je1s"]
-radius = 9.5
+radius = 9.6
 
 [sub_resource type="Curve" id="Curve_27o1x"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0]
@@ -15,7 +15,7 @@ point_count = 2
 curve = SubResource("Curve_27o1x")
 
 [sub_resource type="Gradient" id="Gradient_qmp1o"]
-colors = PackedColorArray(0.646029, 0.646029, 0.646029, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.355314, 0.355314, 0.355314, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7cy41"]
 gradient = SubResource("Gradient_qmp1o")
@@ -30,11 +30,11 @@ curve = SubResource("Curve_yn174")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iy6rh"]
 particle_flag_disable_z = true
 spread = 180.0
-radial_velocity_min = 100.0
-radial_velocity_max = 150.0
+radial_velocity_min = 200.0
+radial_velocity_max = 300.0
 gravity = Vector3(0, 0, 0)
-scale_min = 15.0
-scale_max = 20.0
+scale_min = 2.0
+scale_max = 15.0
 scale_curve = SubResource("CurveTexture_xwjnx")
 color = Color(0.792157, 0.235294, 0.235294, 1)
 color_initial_ramp = SubResource("GradientTexture1D_7cy41")
@@ -52,14 +52,14 @@ texture = ExtResource("1_tv4cc")
 hframes = 11
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 5.5)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3je1s")
 
 [node name="Particles" type="GPUParticles2D" parent="."]
 z_index = 2
 emitting = false
-amount = 40
+amount = 180
 process_material = SubResource("ParticleProcessMaterial_iy6rh")
 one_shot = true
 explosiveness = 1.0

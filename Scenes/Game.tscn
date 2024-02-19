@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b16xovlfqqyik"]
+[gd_scene load_steps=11 format=3 uid="uid://b16xovlfqqyik"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_5beoy"]
 [ext_resource type="Texture2D" uid="uid://7tuwpnpttdrm" path="res://Sprites/case.png" id="1_yq2lv"]
 [ext_resource type="Texture2D" uid="uid://di8g6iv1psk23" path="res://Sprites/case_glass.png" id="2_jis63"]
 [ext_resource type="Texture2D" uid="uid://cihc0rfvs4hlv" path="res://Sprites/cloud.png" id="3_8phbk"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_itl8i"]
+[ext_resource type="Texture2D" uid="uid://cuyxbh6inwf14" path="res://Sprites/fruit-levels.png" id="6_tr7en"]
+[ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="7_pctym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05ed2"]
 size = Vector2(12, 424)
@@ -20,29 +22,29 @@ script = ExtResource("1_5beoy")
 
 [node name="Camera" type="Camera2D" parent="."]
 
-[node name="Wall" type="StaticBody2D" parent="."]
+[node name="Case" type="StaticBody2D" parent="."]
 
-[node name="Case" type="Sprite2D" parent="Wall"]
+[node name="Case" type="Sprite2D" parent="Case"]
 z_index = -2
 position = Vector2(0, 53)
 scale = Vector2(4, 4)
 texture = ExtResource("1_yq2lv")
 
-[node name="CaseGlass" type="Sprite2D" parent="Wall"]
+[node name="CaseGlass" type="Sprite2D" parent="Case"]
 z_index = 3
 position = Vector2(0, 73)
 scale = Vector2(4, 4)
 texture = ExtResource("2_jis63")
 
-[node name="LeftCollision" type="CollisionShape2D" parent="Wall"]
+[node name="LeftCollision" type="CollisionShape2D" parent="Case"]
 position = Vector2(-178, 75)
 shape = SubResource("RectangleShape2D_05ed2")
 
-[node name="RightCollision" type="CollisionShape2D" parent="Wall"]
+[node name="RightCollision" type="CollisionShape2D" parent="Case"]
 position = Vector2(178, 75)
 shape = SubResource("RectangleShape2D_af3tb")
 
-[node name="BottomCollision" type="CollisionShape2D" parent="Wall"]
+[node name="BottomCollision" type="CollisionShape2D" parent="Case"]
 position = Vector2(0, 281)
 shape = SubResource("RectangleShape2D_e4oks")
 
@@ -59,3 +61,84 @@ z_index = -1
 points = PackedVector2Array(0, 0, 0, 167)
 width = 2.0
 default_color = Color(1, 0.145098, 0.0705882, 1)
+
+[node name="Fruit-levels" type="Sprite2D" parent="."]
+position = Vector2(395, 164)
+scale = Vector2(3, 3)
+texture = ExtResource("6_tr7en")
+
+[node name="Fruits2" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(4.91998, -27.903)
+scale = Vector2(0.433333, 0.433333)
+texture = ExtResource("7_pctym")
+hframes = 11
+
+[node name="Fruits3" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(17.7536, -22.0813)
+scale = Vector2(0.433333, 0.433333)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 1
+
+[node name="Fruits4" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(26.1953, -10.797)
+scale = Vector2(0.433333, 0.433333)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 2
+
+[node name="Fruits5" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(28.1566, 3.15834)
+scale = Vector2(0.433333, 0.433333)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 3
+
+[node name="Fruits6" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(23.1523, 16.3323)
+scale = Vector2(0.433333, 0.433333)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 4
+
+[node name="Fruits7" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(12.4207, 25.4657)
+scale = Vector2(0.433333, 0.433333)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 5
+
+[node name="Fruits8" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(-1.38402, 28.2997)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 6
+
+[node name="Fruits9" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(-14.8464, 24.1323)
+scale = Vector2(0.466667, 0.466667)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 7
+
+[node name="Fruits10" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(-24.6357, 13.995)
+scale = Vector2(0.466667, 0.466667)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 8
+
+[node name="Fruits11" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(-28.3307, 0.395664)
+scale = Vector2(0.466667, 0.466667)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 9
+
+[node name="Fruits12" type="Sprite2D" parent="Fruit-levels"]
+position = Vector2(-25.017, -13.3017)
+scale = Vector2(0.466667, 0.466667)
+texture = ExtResource("7_pctym")
+hframes = 11
+frame = 10
