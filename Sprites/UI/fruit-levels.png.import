@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y40y55vs8hn3"
-path="res://.godot/imported/background.png-4fa92766cad903a1a79b587b09bd47c5.ctex"
+uid="uid://cuyxbh6inwf14"
+path="res://.godot/imported/fruit-levels.png-4d96d1145b3fb217c199b18dc6df7592.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/background.png"
-dest_files=["res://.godot/imported/background.png-4fa92766cad903a1a79b587b09bd47c5.ctex"]
+source_file="res://Sprites/UI/fruit-levels.png"
+dest_files=["res://.godot/imported/fruit-levels.png-4d96d1145b3fb217c199b18dc6df7592.ctex"]
 
 [params]
 

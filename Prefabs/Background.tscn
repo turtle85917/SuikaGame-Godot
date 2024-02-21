@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://co8mrsx7lklsh"]
 
-[ext_resource type="Texture2D" uid="uid://b082hjdtb6ycp" path="res://Sprites/rectangle.png" id="1_0cox1"]
-[ext_resource type="Texture2D" uid="uid://y40y55vs8hn3" path="res://Sprites/background.png" id="2_ombcg"]
+[ext_resource type="Texture2D" uid="uid://b082hjdtb6ycp" path="res://Sprites/UI/rectangle.png" id="1_0cox1"]
+[ext_resource type="Texture2D" uid="uid://y40y55vs8hn3" path="res://Sprites/Common/background.png" id="2_ombcg"]
 
 [node name="Background" type="Node2D"]
 z_index = -4096

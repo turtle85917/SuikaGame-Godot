@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d6pi2eeqswpl"
-path="res://.godot/imported/fruits.png-90e6d4c1329c8df978601a79f962a921.ctex"
+uid="uid://7tuwpnpttdrm"
+path="res://.godot/imported/case.png-0ac785090171aa1a61de689ad1874878.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/fruits.png"
-dest_files=["res://.godot/imported/fruits.png-90e6d4c1329c8df978601a79f962a921.ctex"]
+source_file="res://Sprites/Case/case.png"
+dest_files=["res://.godot/imported/case.png-0ac785090171aa1a61de689ad1874878.ctex"]
 
 [params]
 

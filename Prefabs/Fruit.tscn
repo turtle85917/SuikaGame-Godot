@@ -1,8 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://d2eqi7ox8155s"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://bf224yxh4cdvl" path="res://Materials/FruitPhysicsMaterial.tres" id="1_1eegl"]
-[ext_resource type="Script" path="res://Scripts/Fruit.gd" id="1_f38tn"]
-[ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="1_tv4cc"]
+[ext_resource type="Script" path="res://Scripts/Game/Fruit.gd" id="2_6vuy6"]
+[ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/Game/fruits.png" id="2_bi38u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vl8n4"]
+bounce = 0.15
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3je1s"]
 radius = 9.6
@@ -41,14 +43,14 @@ color_initial_ramp = SubResource("GradientTexture1D_7cy41")
 alpha_curve = SubResource("CurveTexture_fm2xi")
 
 [node name="Fruit" type="RigidBody2D" groups=["Fruit"]]
-physics_material_override = ExtResource("1_1eegl")
+physics_material_override = SubResource("PhysicsMaterial_vl8n4")
 max_contacts_reported = 9999
 contact_monitor = true
-script = ExtResource("1_f38tn")
+script = ExtResource("2_6vuy6")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_tv4cc")
+texture = ExtResource("2_bi38u")
 hframes = 11
 
 [node name="Collision" type="CollisionShape2D" parent="."]

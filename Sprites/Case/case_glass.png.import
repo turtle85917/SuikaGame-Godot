@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhc712bmn53bj"
-path="res://.godot/imported/button.png-877ac5cd2b80fdc0cebdbf31a84881c2.ctex"
+uid="uid://di8g6iv1psk23"
+path="res://.godot/imported/case_glass.png-43681b1f3ef3728edb3fae31891d1c27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/button.png"
-dest_files=["res://.godot/imported/button.png-877ac5cd2b80fdc0cebdbf31a84881c2.ctex"]
+source_file="res://Sprites/Case/case_glass.png"
+dest_files=["res://.godot/imported/case_glass.png-43681b1f3ef3728edb3fae31891d1c27.ctex"]
 
 [params]
 
