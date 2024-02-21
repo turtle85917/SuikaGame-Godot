@@ -180,14 +180,47 @@ vertical_alignment = 1
 [node name="Score" type="Label" parent="CanvasLayer/Control"]
 modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 0
-offset_left = 881.0
-offset_top = 168.0
-offset_right = 1061.0
-offset_bottom = 220.0
+offset_left = 929.0
+offset_top = 165.0
+offset_right = 1013.0
+offset_bottom = 198.0
 theme_override_colors/font_outline_color = Color(0.713726, 0.713726, 0.713726, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("9_57rmj")
 theme_override_font_sizes/font_size = 25
+text = "​9,999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Best Score Title" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 923.0
+offset_top = 204.0
+offset_right = 1019.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_57rmj")
+theme_override_font_sizes/font_size = 15
+text = "Best Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Best Score" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 0
+offset_left = 948.0
+offset_top = 225.0
+offset_right = 996.0
+offset_bottom = 245.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.196078)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_57rmj")
+theme_override_font_sizes/font_size = 15
 text = "​9,999"
 horizontal_alignment = 1
 vertical_alignment = 1

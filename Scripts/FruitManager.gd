@@ -23,10 +23,12 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	if(type + 1 > len(instance.fruits)): return;
 	var fruit = instance.fruits[type];
 	var fruitNode = instance.Fruit.instantiate();
+	# Add fruit to game
 	owner.get_node("Fruits").call_deferred_thread_group("add_child", fruitNode, true);
 	fruitNode.mass = fruit.size * 0.2;
 	fruitNode.name = "Fruit";
 	fruitNode.fruitType = fruit.type;
+	# Update fruit shape
 	var fruitSprite = fruitNode.get_node("Sprite");
 	var fruitCollision = fruitNode.get_node("Collision");
 	fruitSprite.frame = fruit.type;
@@ -35,12 +37,14 @@ static func createFruitType(owner:Node, type:FruitType, initalPosition:Vector2 =
 	if(freezing):
 		fruitNode.freeze = true;
 		fruitCollision.disabled = true;
+	# Process when tree entered
 	fruitNode.connect("tree_entered", func():
 		fruitNode.set_owner(owner)
 		if(!freezing):
 			fruitSprite.scale = Vector2.ZERO;
 			fruitNode.playShowAnimation(fruit);
 	);
+	# Return fruit
 	if(fruit.has("offset")): fruitCollision.transform.origin.y += fruit.offset;
 	fruitNode.transform.origin = initalPosition;
 	return fruitNode;
