@@ -4,15 +4,33 @@ extends RigidBody2D
 @export var isMerged = false;
 
 @onready var game = get_owner();
+@onready var limitLine = game.get_node("Case/LimitLine");
+@onready var timer:Timer = $Timer;
 
 var tween:Tween = null;
+var isEnteredLine:bool = false;
+
+func _ready():
+	limitLine.connect("body_entered", _on_limit_line_entered);
+	limitLine.connect("body_exited", _on_limit_line_exited);
+	timer.connect("timeout", _timeout);
 
 func _physics_process(_delta):
 	if(!freeze):
 		if(transform.origin.y > 300):
 			game.isGameOver = true;
-		if(transform.origin.y < -300):
-			pass
+
+func _timeout():
+	if(isEnteredLine):
+		game.isGameOver = true;
+
+func _on_limit_line_entered(_body):
+	isEnteredLine = true;
+	timer.start();
+
+func _on_limit_line_exited(_body):
+	isEnteredLine = false;
+	timer.stop();
 
 func _on_body_entered(body:Node):
 	if(fruitType == FruitManager.FruitType.Watermelon): return;

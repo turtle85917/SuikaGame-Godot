@@ -64,4 +64,8 @@ process_material = SubResource("ParticleProcessMaterial_iy6rh")
 one_shot = true
 explosiveness = 1.0
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

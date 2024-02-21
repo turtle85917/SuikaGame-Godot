@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cp4t4iqniowif"]
 
-[ext_resource type="Script" path="res://Scenes/GameOverControl.gd" id="1_iibcm"]
+[ext_resource type="Script" path="res://Scripts/GameOverControl.gd" id="1_67tid"]
 [ext_resource type="Texture2D" uid="uid://bhekpppl56xa7" path="res://Sprites/bubble.png" id="1_mcqm7"]
 [ext_resource type="FontFile" uid="uid://bpydjvme15h2g" path="res://Fonts/Cafe24Ssurround-v2.0.ttf" id="2_rbdbf"]
 [ext_resource type="Texture2D" uid="uid://bhc712bmn53bj" path="res://Sprites/button.png" id="3_er1v1"]
@@ -50,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_iibcm")
+script = ExtResource("1_67tid")
 
 [node name="Fader" type="ColorRect" parent="Control"]
 layout_mode = 1
