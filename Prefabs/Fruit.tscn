@@ -42,7 +42,7 @@ alpha_curve = SubResource("CurveTexture_fm2xi")
 
 [node name="Fruit" type="RigidBody2D" groups=["Fruit"]]
 physics_material_override = ExtResource("1_1eegl")
-max_contacts_reported = 2
+max_contacts_reported = 9999
 contact_monitor = true
 script = ExtResource("1_f38tn")
 

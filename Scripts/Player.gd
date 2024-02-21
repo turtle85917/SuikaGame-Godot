@@ -9,11 +9,12 @@ func _ready():
 	createFruit();
 
 func _physics_process(_delta):
+	if(get_owner().isGameOver): return;
 	var strength = Input.get_action_strength("right") - Input.get_action_strength("left");
 	move_local_x(strength * 8);
-	if(abs(transform.origin.x) > MAX_POS_X):
-		transform.origin.x = min(max(transform.origin.x, -MAX_POS_X), MAX_POS_X);
-		return;
+	#if(abs(transform.origin.x) > MAX_POS_X):
+		#transform.origin.x = min(max(transform.origin.x, -MAX_POS_X), MAX_POS_X);
+		#return;
 	if(fruitNode != null && isMoving):
 		fruitNode.transform.origin.x = transform.origin.x;
 	if(Input.is_action_just_pressed("jump") && isMoving):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b16xovlfqqyik"]
+[gd_scene load_steps=14 format=3 uid="uid://b16xovlfqqyik"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_5beoy"]
 [ext_resource type="Texture2D" uid="uid://7tuwpnpttdrm" path="res://Sprites/case.png" id="1_yq2lv"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="5_itl8i"]
 [ext_resource type="Texture2D" uid="uid://cuyxbh6inwf14" path="res://Sprites/fruit-levels.png" id="6_tr7en"]
 [ext_resource type="Texture2D" uid="uid://d6pi2eeqswpl" path="res://Sprites/fruits.png" id="7_pctym"]
+[ext_resource type="Texture2D" uid="uid://bhekpppl56xa7" path="res://Sprites/bubble.png" id="8_it0qk"]
+[ext_resource type="FontFile" uid="uid://bpydjvme15h2g" path="res://Fonts/Cafe24Ssurround-v2.0.ttf" id="9_57rmj"]
+[ext_resource type="PackedScene" uid="uid://co8mrsx7lklsh" path="res://Prefabs/Background.tscn" id="9_iikne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05ed2"]
 size = Vector2(12, 424)
@@ -62,83 +65,129 @@ points = PackedVector2Array(0, 0, 0, 167)
 width = 2.0
 default_color = Color(1, 0.145098, 0.0705882, 1)
 
-[node name="Fruit-levels" type="Sprite2D" parent="."]
+[node name="Fruit Levels" type="Sprite2D" parent="."]
 position = Vector2(395, 164)
 scale = Vector2(3, 3)
 texture = ExtResource("6_tr7en")
 
-[node name="Fruits2" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits2" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(4.91998, -27.903)
 scale = Vector2(0.433333, 0.433333)
 texture = ExtResource("7_pctym")
 hframes = 11
 
-[node name="Fruits3" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits3" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(17.7536, -22.0813)
 scale = Vector2(0.433333, 0.433333)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 1
 
-[node name="Fruits4" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits4" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(26.1953, -10.797)
 scale = Vector2(0.433333, 0.433333)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 2
 
-[node name="Fruits5" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits5" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(28.1566, 3.15834)
 scale = Vector2(0.433333, 0.433333)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 3
 
-[node name="Fruits6" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits6" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(23.1523, 16.3323)
 scale = Vector2(0.433333, 0.433333)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 4
 
-[node name="Fruits7" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits7" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(12.4207, 25.4657)
 scale = Vector2(0.433333, 0.433333)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 5
 
-[node name="Fruits8" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits8" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(-1.38402, 28.2997)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 6
 
-[node name="Fruits9" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits9" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(-14.8464, 24.1323)
 scale = Vector2(0.466667, 0.466667)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 7
 
-[node name="Fruits10" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits10" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(-24.6357, 13.995)
-scale = Vector2(0.466667, 0.466667)
+scale = Vector2(0.53, 0.53)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 8
 
-[node name="Fruits11" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits11" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(-28.3307, 0.395664)
 scale = Vector2(0.466667, 0.466667)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 9
 
-[node name="Fruits12" type="Sprite2D" parent="Fruit-levels"]
+[node name="Fruits12" type="Sprite2D" parent="Fruit Levels"]
 position = Vector2(-25.017, -13.3017)
 scale = Vector2(0.466667, 0.466667)
 texture = ExtResource("7_pctym")
 hframes = 11
 frame = 10
+
+[node name="Bubble" type="Sprite2D" parent="."]
+position = Vector2(395, -130)
+scale = Vector2(2, 2)
+texture = ExtResource("8_it0qk")
+
+[node name="Background" parent="." instance=ExtResource("9_iikne")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 90.0
+offset_right = 1042.0
+offset_bottom = 142.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_57rmj")
+theme_override_font_sizes/font_size = 25
+text = "​SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 881.0
+offset_top = 168.0
+offset_right = 1061.0
+offset_bottom = 220.0
+theme_override_colors/font_outline_color = Color(0.713726, 0.713726, 0.713726, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_57rmj")
+theme_override_font_sizes/font_size = 25
+text = "​9,999"
+horizontal_alignment = 1
+vertical_alignment = 1

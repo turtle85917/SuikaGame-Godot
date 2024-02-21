@@ -3,7 +3,16 @@ extends RigidBody2D
 @export var fruitType:FruitManager.FruitType;
 @export var isMerged = false;
 
+@onready var game = get_owner();
+
 var tween:Tween = null;
+
+func _physics_process(_delta):
+	if(!freeze):
+		if(transform.origin.y > 300):
+			game.isGameOver = true;
+		if(transform.origin.y < -300):
+			pass
 
 func _on_body_entered(body:Node):
 	if(fruitType == FruitManager.FruitType.Watermelon): return;
@@ -14,6 +23,7 @@ func _on_body_entered(body:Node):
 		body.stopAnimation();
 		queue_free();
 		body.queue_free();
+		get_owner().score += pow(fruitType + 1, 2);
 		FruitManager.createFruitType(get_owner(), fruitType + 1, body.transform.origin);
 
 func playShowAnimation(fruit:Dictionary):
@@ -24,6 +34,7 @@ func playShowAnimation(fruit:Dictionary):
 	fruitParticles.emitting = true;
 	tween = owner.create_tween();
 	tween.tween_property(get_node("Sprite"), "scale", Vector2.ONE * fruit.size, 0.2).set_trans(Tween.TRANS_EXPO);
+	tween.play();
 
 func stopAnimation():
 	if(tween != null):

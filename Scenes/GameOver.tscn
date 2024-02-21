@@ -1,0 +1,221 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp4t4iqniowif"]
+
+[ext_resource type="Script" path="res://Scenes/GameOverControl.gd" id="1_iibcm"]
+[ext_resource type="Texture2D" uid="uid://bhekpppl56xa7" path="res://Sprites/bubble.png" id="1_mcqm7"]
+[ext_resource type="FontFile" uid="uid://bpydjvme15h2g" path="res://Fonts/Cafe24Ssurround-v2.0.ttf" id="2_rbdbf"]
+[ext_resource type="Texture2D" uid="uid://bhc712bmn53bj" path="res://Sprites/button.png" id="3_er1v1"]
+
+[sub_resource type="Animation" id="Animation_cnwrt"]
+resource_name = "Fade In"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Fader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.823529)]
+}
+
+[sub_resource type="Animation" id="Animation_englc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Fader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4focb"]
+_data = {
+"Fade In": SubResource("Animation_cnwrt"),
+"RESET": SubResource("Animation_englc")
+}
+
+[node name="GameOver" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iibcm")
+
+[node name="Fader" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Fader"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_4focb")
+}
+
+[node name="Screenshot" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_right = 50.0
+grow_vertical = 2
+
+[node name="Score Bubble" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 40.0
+offset_right = 860.0
+offset_bottom = 120.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_mcqm7")
+
+[node name="Score Title" type="Label" parent="Control/Score Bubble"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -43.0
+offset_right = 31.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_rbdbf")
+theme_override_font_sizes/font_size = 14
+text = "​Score
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score" type="Label" parent="Control/Score Bubble"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.713726, 0.713726, 0.713726, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_rbdbf")
+theme_override_font_sizes/font_size = 13
+text = "​9,999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScore Bubble" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 915.0
+offset_top = 155.0
+offset_right = 995.0
+offset_bottom = 235.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_mcqm7")
+
+[node name="Score Title" type="Label" parent="Control/BestScore Bubble"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -45.4
+offset_right = 39.0
+offset_bottom = -28.4
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_rbdbf")
+theme_override_font_sizes/font_size = 12
+text = "​Best Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score" type="Label" parent="Control/BestScore Bubble"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.713726, 0.713726, 0.713726, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_rbdbf")
+theme_override_font_sizes/font_size = 13
+text = "​9,999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart Button" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 915.0
+offset_top = 450.0
+offset_right = 1083.0
+offset_bottom = 498.0
+texture_normal = ExtResource("3_er1v1")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/Restart Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit Button" type="TextureButton" parent="Control"]
+offset_left = 915.0
+offset_top = 520.0
+offset_right = 1083.0
+offset_bottom = 568.0
+texture_normal = ExtResource("3_er1v1")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/Quit Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1

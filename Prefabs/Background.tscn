@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://co8mrsx7lklsh"]
+
+[ext_resource type="Texture2D" uid="uid://b082hjdtb6ycp" path="res://Sprites/rectangle.png" id="1_0cox1"]
+[ext_resource type="Texture2D" uid="uid://y40y55vs8hn3" path="res://Sprites/background.png" id="2_ombcg"]
+
+[node name="Background" type="Node2D"]
+z_index = -4096
+
+[node name="Rectangle" type="Sprite2D" parent="."]
+modulate = Color(0.901961, 0.784314, 0.427451, 1)
+scale = Vector2(36, 20.25)
+texture = ExtResource("1_0cox1")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 228)
+scale = Vector2(6, 6)
+texture = ExtResource("2_ombcg")
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 32)
