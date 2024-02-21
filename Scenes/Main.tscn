@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://de2fdfrqr7aul"]
+
+[ext_resource type="PackedScene" uid="uid://co8mrsx7lklsh" path="res://Prefabs/Background.tscn" id="1_fw03f"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_g1dg0"]
+[ext_resource type="FontFile" uid="uid://bpydjvme15h2g" path="res://Fonts/Cafe24Ssurround-v2.0.ttf" id="2_tuq0s"]
+[ext_resource type="Texture2D" uid="uid://bhc712bmn53bj" path="res://Sprites/button.png" id="3_chfak"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_g1dg0")
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="Background" parent="." instance=ExtResource("1_fw03f")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 203.0
+offset_right = 722.0
+offset_bottom = 258.0
+theme_override_colors/default_color = Color(0.839216, 0.666667, 0.156863, 1)
+theme_override_colors/font_outline_color = Color(0.219608, 0.164706, 0.0156863, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_tuq0s")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[wave]​Suika Game[/wave]"
+scroll_active = false
+
+[node name="By" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 253.0
+offset_right = 708.0
+offset_bottom = 276.0
+theme_override_colors/font_outline_color = Color(0.278431, 0.54902, 0.74902, 1)
+theme_override_constants/outline_size = 5
+text = "By Godot Engine"
+
+[node name="Start Button" type="TextureButton" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 46.0
+offset_right = 84.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_chfak")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Start Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
