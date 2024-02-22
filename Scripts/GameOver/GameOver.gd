@@ -11,9 +11,12 @@ func _ready():
 
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene();
+	SoundManager.playSFX("Click");
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Main.tscn");
+	SoundManager.playSFX("Click");
 
 func _on_quit_button_pressed():
 	get_tree().quit();
+	SoundManager.playSFX("Click");

@@ -43,6 +43,7 @@ func _on_body_entered(body:Node):
 		body.queue_free();
 		get_owner().score += pow(fruitType + 1, 2);
 		FruitManager.createFruitType(get_owner(), fruitType + 1, body.transform.origin);
+		SoundManager.playSFX("Pop");
 
 func playShowAnimation(fruit:Dictionary):
 	var fruitParticles:GPUParticles2D = get_node("Particles");
