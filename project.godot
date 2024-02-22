@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Watermelon-Game"
+config/name="Suika Game"
+config/description="Drop the fruit!"
+config/version="1.0.0.0"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 

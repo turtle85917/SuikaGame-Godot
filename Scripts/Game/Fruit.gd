@@ -24,11 +24,13 @@ func _timeout():
 	if(isEnteredLine):
 		game.isGameOver = true;
 
-func _on_limit_line_entered(_body):
+func _on_limit_line_entered(body:Node2D):
+	if(body.name != name): return;
 	isEnteredLine = true;
 	timer.start();
 
-func _on_limit_line_exited(_body):
+func _on_limit_line_exited(body:Node2D):
+	if(body.name != name): return;
 	isEnteredLine = false;
 	timer.stop();
 

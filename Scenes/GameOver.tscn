@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp4t4iqniowif"]
+[gd_scene load_steps=9 format=3 uid="uid://cp4t4iqniowif"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver/GameOver.gd" id="1_32l3p"]
 [ext_resource type="Texture2D" uid="uid://bhekpppl56xa7" path="res://Sprites/UI/bubble.png" id="2_dycsi"]
 [ext_resource type="FontFile" uid="uid://bpydjvme15h2g" path="res://Fonts/Cafe24Ssurround-v2.0.ttf" id="2_rbdbf"]
 [ext_resource type="Texture2D" uid="uid://bhc712bmn53bj" path="res://Sprites/UI/button.png" id="4_woboh"]
+[ext_resource type="Texture2D" uid="uid://bf52nbmex00n8" path="res://Sprites/UI/button_disabled.png" id="5_d7x80"]
 
 [sub_resource type="Animation" id="Animation_cnwrt"]
 resource_name = "Fade In"
@@ -42,6 +43,7 @@ _data = {
 }
 
 [node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_32l3p")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -50,7 +52,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_32l3p")
 
 [node name="Fader" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -180,9 +181,9 @@ vertical_alignment = 1
 [node name="Restart Button" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 915.0
-offset_top = 430.0
+offset_top = 390.0
 offset_right = 1083.0
-offset_bottom = 478.0
+offset_bottom = 438.0
 texture_normal = ExtResource("4_woboh")
 stretch_mode = 6
 
@@ -202,9 +203,9 @@ vertical_alignment = 1
 [node name="Back Button" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 915.0
-offset_top = 490.0
+offset_top = 455.0
 offset_right = 1083.0
-offset_bottom = 538.0
+offset_bottom = 503.0
 texture_normal = ExtResource("4_woboh")
 stretch_mode = 6
 
@@ -221,12 +222,34 @@ text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Save Screenshot Button" type="TextureButton" parent="Control"]
+offset_left = 915.0
+offset_top = 520.0
+offset_right = 1083.0
+offset_bottom = 568.0
+texture_normal = ExtResource("4_woboh")
+texture_disabled = ExtResource("5_d7x80")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/Save Screenshot Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Save Screenshot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Quit Button" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 915.0
-offset_top = 550.0
+offset_top = 585.0
 offset_right = 1083.0
-offset_bottom = 598.0
+offset_bottom = 633.0
 texture_normal = ExtResource("4_woboh")
 stretch_mode = 6
 

@@ -51,4 +51,5 @@ func _process(_delta):
 		# Add "GameOver" Scene to tree
 		add_child(gameOverNode, true);
 		gameOverNode.name = "GameOver";
+		gameOverNode.screenshotImage = img;
 		faderRect.get_node("AnimationPlayer").play("Fade In");
