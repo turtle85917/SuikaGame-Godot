@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b16xovlfqqyik"]
+[gd_scene load_steps=14 format=3 uid="uid://b16xovlfqqyik"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Game.gd" id="1_5beoy"]
 [ext_resource type="Texture2D" uid="uid://7tuwpnpttdrm" path="res://Sprites/Case/case.png" id="1_yq2lv"]
@@ -19,9 +19,6 @@ size = Vector2(12, 424)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4oks"]
 size = Vector2(344, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ap1rc"]
-size = Vector2(356, 8)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_5beoy")
@@ -53,13 +50,6 @@ shape = SubResource("RectangleShape2D_af3tb")
 [node name="BottomCollision" type="CollisionShape2D" parent="Case"]
 position = Vector2(0, 281)
 shape = SubResource("RectangleShape2D_e4oks")
-
-[node name="LimitLine" type="Area2D" parent="Case"]
-position = Vector2(0, -137)
-
-[node name="Collision" type="CollisionShape2D" parent="Case/LimitLine"]
-position = Vector2(6, -4)
-shape = SubResource("RectangleShape2D_ap1rc")
 
 [node name="Fruits" type="Node2D" parent="."]
 

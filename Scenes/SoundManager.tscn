@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkiuw8lrfps6d"]
+[gd_scene load_steps=5 format=3 uid="uid://bkiuw8lrfps6d"]
 
 [ext_resource type="Script" path="res://Scripts/Common/SoundManager.gd" id="1_ngouc"]
 [ext_resource type="AudioStream" uid="uid://dxcep543a14we" path="res://Sounds/pop.wav" id="2_wcg53"]
 [ext_resource type="AudioStream" uid="uid://dxuewytki77ui" path="res://Sounds/click.mp3" id="3_gi653"]
+[ext_resource type="AudioStream" uid="uid://rwi7fqbmjncr" path="res://Sounds/BGM.mp3" id="4_npdx1"]
 
 [node name="SoundMananger" type="Node"]
 script = ExtResource("1_ngouc")
@@ -14,3 +15,8 @@ volume_db = -14.0
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_gi653")
 volume_db = -7.0
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_npdx1")
+volume_db = -20.0
+bus = &"Bgm"

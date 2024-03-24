@@ -17,6 +17,8 @@ func _ready():
 	bestScore = SaveManager.loadScore();
 	bestScoreText.text = "​%s" % bestScore;
 
+	SoundManager.playBGM();
+
 func _process(_delta):
 	scoreText.text = "​%s" % score;
 	if(bestScore < score):

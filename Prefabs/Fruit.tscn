@@ -47,8 +47,6 @@ physics_material_override = SubResource("PhysicsMaterial_vl8n4")
 max_contacts_reported = 9999
 contact_monitor = true
 script = ExtResource("2_6vuy6")
-fruitType = null
-isMerged = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -67,9 +65,5 @@ amount = 180
 process_material = SubResource("ParticleProcessMaterial_iy6rh")
 one_shot = true
 explosiveness = 1.0
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

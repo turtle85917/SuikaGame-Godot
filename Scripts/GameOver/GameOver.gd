@@ -16,10 +16,12 @@ func _ready():
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene();
 	SoundManager.playSFX("Click");
+	SoundManager.replayBGM();
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Main.tscn");
 	SoundManager.playSFX("Click");
+	SoundManager.stopBGM();
 
 func _on_save_screenshot_button_pressed():
 	const pathname = "Screenshots";

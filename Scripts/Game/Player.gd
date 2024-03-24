@@ -21,6 +21,7 @@ func _physics_process(_delta):
 		isMoving = false;
 		fruitNode.freeze = false;
 		fruitNode.get_node("Collision").disabled = false;
+		SoundManager.playSFX("Pop")
 		get_tree().create_timer(0.5).connect("timeout", func():createFruit());
 
 func createFruit():
